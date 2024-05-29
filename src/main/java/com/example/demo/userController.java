@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/users")
-class UserController {
-    private User.Usuario user = new User.Usuario(1, "John");
+class userController {
+    private User user = new User();
 
     @GetMapping("/{id}")
     public ResponseEntity<Object> getUserById(@PathVariable int id) {
@@ -22,7 +22,7 @@ class UserController {
 
     @PostMapping
     public ResponseEntity<Object> createUser(@RequestBody User newUser) {
-        user = (User.Usuario) newUser;
+        user = (User) newUser;
         return ResponseEntity.ok().body(new ApiResponse("Usuário foi criado com sucesso.", newUser));
     }
 
@@ -30,7 +30,7 @@ class UserController {
     public ResponseEntity<Object> updateUser(@PathVariable int id, @RequestBody User updatedUser) {
 
         if (id == user.getId()) {
-            user = (User.Usuario) updatedUser;
+            user = (User) updatedUser;
             return ResponseEntity.ok().body(new ApiResponse("Usuário foi atualizado com sucesso.", updatedUser));
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiResponse("Usuário não encontrado.", true));

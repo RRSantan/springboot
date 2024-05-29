@@ -1,11 +1,10 @@
 package com.example.demo.user;
 
-public interface User {
-    public class Usuario {
+    public class User {
         private int id;
         private String name;
 
-        public Usuario(int id, String name) {
+        public void Usuario(int id, String name) {
             this.id = id;
             this.name = name;
         }
@@ -26,5 +25,3 @@ public interface User {
             this.name = name;
         }
     }
-
-}
